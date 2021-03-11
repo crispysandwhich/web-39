@@ -7,9 +7,10 @@ const server = express();
 
 server.use(express.json())
 
-if(process.env.NODE_ENV !== 'development'){
+if(process.env.NODE_ENV === 'development'){
   const cors = require('cors')
   server.use(cors())
+  console.log(process.env.NODE_ENV)
 }
 
 
@@ -22,5 +23,6 @@ server.use('*', (res,req) => {
 const PORT = process.env.PORT || 4000
 
 server.listen(PORT, () => {
+  
   console.log(`listing on ${PORT}`)
 })
